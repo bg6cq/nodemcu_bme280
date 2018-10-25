@@ -93,7 +93,7 @@ function func_read_bme280()
     end
     return
   end
-  press = P/1000
+  press = P / 100
   temp = T / 100
   humi = H / 1000
   if wifi.sta.status() ~= 5 then
@@ -111,7 +111,7 @@ function func_read_bme280()
     rssi = -100
   end
   data_send = false
-  print("read count="..string.format("%d: temp=%.1f, humi=%.1f, press=%.4f, rssi=%d, uptime=%d",
+  print("read count="..string.format("%d: temp=%.1f, humi=%.1f, press=%.1f, rssi=%d, uptime=%d",
     count,temp,humi,press,rssi,tmr.time()))
   if mqtt_connected then
     print("mqtt publish")
