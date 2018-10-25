@@ -20,14 +20,16 @@
 连线图：
 
 ```
-BME280模块
-VCC  -->  电源 注意是5v还是3.3v
-GND  -->  GND
-SDA  -->  D3 (GPIO0)
-SCL  -->  D4 (GPIO2)
+BME280模块       ESP8266模块
+       VCC  -->  电源 注意是5v还是3.3v
+       GND  -->  GND
+       SDA  -->  D3 (GPIO0)
+       SCL  -->  D4 (GPIO2)
 ```
 
-![IMG](bme280_schematic.png)
+ESP8266 Lua Wifiv3 pinout(https://www.teachmemicro.com/nodemcu-pinout/)
+
+![IMG](NodeMCUv3.0-pinout.jpg)
 
 参考网页：
 
