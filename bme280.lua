@@ -53,7 +53,7 @@ end
 function send_data()
   if send_aprs then
     print("aprs send "..aprs_host)
-    str = aprs_prefix.."000/000g000t"..string.format("%03d", temp*9/5+32).."r000p000h"..string.format("%02d",humi).."b".string.format("%05d", press)
+    str = aprs_prefix.."000/000g000t"..string.format("%03d", temp*9/5+32).."r000p000h"..string.format("%02d",humi).."b"..string.format("%05d", press)
     str = str.."ESP8266 MAC "..wifi.sta.getmac().." RSSI: "..rssi
     print(str)
     conn = net.createUDPSocket()
@@ -115,7 +115,7 @@ function func_read_bme280()
     count,temp,humi,press,rssi,tmr.time()))
   if mqtt_connected then
     print("mqtt publish")
-    m:publish(mqtt_topic, string.format("{\"temperature\": %.1f, \"humidity\": %.1f, \"press\": %.4f, \"rssi\": %d, \"uptime\": %d}",
+    m:publish(mqtt_topic, string.format("{\"temperature\": %.1f, \"humidity\": %.1f, \"press\": %.1f, \"rssi\": %d, \"uptime\": %d}",
       temp, humi, rssi, press, tmr.time()),0,0)
     data_send = true
   elseif send_mqtt then
