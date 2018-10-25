@@ -19,6 +19,14 @@
 
 连线图：
 
+```
+BME280模块
+VCC  -->  电源 注意是5v还是3.3v
+GND  -->  GND
+SCL  -->  D3 (GPIO0)
+SDA  -->  D4 (GPIO2)
+```
+
 ![IMG](bme280_schematic.png)
 
 参考网页：
