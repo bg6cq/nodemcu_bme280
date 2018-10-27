@@ -20,7 +20,7 @@
 
 ```
 BME280模块       ESP8266模块
-       VCC  -->  电源 注意是5v还是3.3v
+       VCC  -->  电源 注意是3.3v模块
        GND  -->  GND
        SCL  -->  D5 (GPIO14)
        SDA  -->  D6 (GPIO12)
