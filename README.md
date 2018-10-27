@@ -12,7 +12,6 @@
 
 * [ESP8266 Lua WIFI V3](https://item.taobao.com/item.htm?id=531755241333) 15.40元
 * [USB 线](https://item.taobao.com/item.htm?id=557156308010) 1.70元
-* [5*7cm PCB板](https://item.taobao.com/item.htm?id=16090300752) 0.32元
 * [BME280](https://item.taobao.com/item.htm?id=541618585092) 16.50元
 
 外加USB电源就可以工作。
@@ -23,13 +22,12 @@
 BME280模块       ESP8266模块
        VCC  -->  电源 注意是5v还是3.3v
        GND  -->  GND
-       SDA  -->  D3 (GPIO0)
-       SCL  -->  D4 (GPIO2)
+       SCL  -->  D5 (GPIO14)
+       SDA  -->  D6 (GPIO12)
 ```
 
-ESP8266 Lua Wifiv3 pinout(https://www.teachmemicro.com/nodemcu-pinout/)
 
-![IMG](NodeMCUv3.0-pinout.jpg)
+![IMG](nodemcu_v3_pin.jpg) ![IMG](bme280_pin.jpg)
 
 参考网页：
 
