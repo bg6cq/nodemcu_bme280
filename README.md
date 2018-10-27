@@ -29,8 +29,6 @@ BME280模块       ESP8266模块
 
 ![IMG](nodemcu_v3_pin.jpg) ![IMG](bme280_pin.jpg)
 
-参考网页：
-
 步骤：
 
 1. 安装esptool.py
@@ -63,27 +61,13 @@ BME280模块       ESP8266模块
 
    依次打开 bme280.lua init.lua setup.lua 三个文件上传到ESP8266
 
-8. 设置
+8. 配置
 
-   可以修改 config.lua 上传，也可以不上传 config.lua，进入配置模式修改设置
+   如果启动时 config.lua 不存在，会生成默认配置，默认配置SSID为ustcnet，通过MQTT发送至 202.141.176.2，并进入配置模式。
 
-9. 配置模式
-
-   如果 config.lua 不存在，启动时会生成默认配置，默认配置SSID为ustcnet，通过MQTT发送至 202.141.176.2，并进入配置模式。
-
-   也可以在运行时，按 FLASH 键超过3秒钟，下次启动将进入配置模式。
+   也可以在运行时，按 FLASH 键，下次启动将进入配置模式。
 
    在配置模式，可以用手机等终端，连接 "ESP8266" SSID，访问 http://192.168.0.1 ，修改配置后单击 "save" 保存。
 
+   也可以把config.lua文件下载回来修改后再上传。
 
-```
-reset_reson:
-
-0, power-on
-1, hardware watchdog reset
-2, exception reset
-3, software watchdog reset
-4, software restart
-5, wake from deep sleep
-6, external reset
-```
