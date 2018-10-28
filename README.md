@@ -27,7 +27,7 @@ BME280模块       ESP8266模块
 ```
 
 
-![IMG](nodemcu_v3_pin.jpg) ![IMG](bme280_pin.jpg)
+![IMG](img/nodemcu_v3_pin.jpg) ![IMG](img/bme280_pin.jpg)
 
 步骤：
 
