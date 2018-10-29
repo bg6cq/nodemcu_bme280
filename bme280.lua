@@ -116,7 +116,7 @@ function func_read_bme280()
   if mqtt_connected then
     print("mqtt publish")
     m:publish(mqtt_topic, string.format("{\"temperature\": %.1f, \"humidity\": %.1f, \"press\": %.1f, \"rssi\": %d, \"uptime\": %d}",
-      temp, humi, rssi, press, tmr.time()),0,0)
+      temp, humi, press, rssi, tmr.time()),0,0)
     data_send = true
   elseif send_mqtt then
     print("mqtt try connect to "..mqtt_host..":"..mqtt_port)
