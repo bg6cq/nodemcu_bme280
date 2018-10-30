@@ -127,8 +127,8 @@ srv:listen(80,function(conn)
     buf = buf .. "<form method='get' action='http://" .. wifi.ap.getip() .."'>\n"
     buf = buf .. "wifi SSID: <input type='text' name='wifissid' value='"..wifi_ssid.."'></input><br>"
     buf = buf .. "wifi password: <input type='text' name='wifipassword' value='"..wifi_password.."'></input><br>\n"
-    buf = buf .. "I2C SDA: <input type='text' name='sda' value='"..sda.."'></input>(default 3, GPIO0)<br>"
-    buf = buf .. "I2C SCL: <input type='text' name='scl' value='"..scl.."'></input>(default 4, GPIO2)<br>"
+    buf = buf .. "I2C SCL: <input type='text' name='scl' value='"..scl.."'></input>(default 5, GPIO14)<br>"
+    buf = buf .. "I2C SDA: <input type='text' name='sda' value='"..sda.."'></input>(default 6, GPIO12)<br>"
 
     buf = buf .. "<hr>flash LED: <input type='checkbox' name='flashled' value='true'"
     if (flash_led) then
