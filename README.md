@@ -13,17 +13,18 @@
 * [ESP8266 Lua WIFI V3](https://item.taobao.com/item.htm?id=531755241333) 15.40元
 * [USB 线](https://item.taobao.com/item.htm?id=557156308010) 1.70元
 * [BME280](https://item.taobao.com/item.htm?id=541618585092) 16.50元
+* [OLED屏幕](https://item.taobao.com/item.htm?id=530578193927) 12.30元（可选）
 
 外加USB电源就可以工作。
 
 连线图：
 
 ```
-BME280模块       ESP8266模块
-       VCC  -->  电源 注意是3.3v模块
-       GND  -->  GND
-       SCL  -->  D5 (GPIO14)
-       SDA  -->  D6 (GPIO12)
+BME280模块/OLED屏幕       ESP8266模块
+            VCC  -->  电源 注意是3.3v模块
+            GND  -->  GND
+            SCL  -->  D5 (GPIO14)
+            SDA  -->  D6 (GPIO12)
 ```
 
 
@@ -43,9 +44,9 @@ BME280模块       ESP8266模块
 
 4. 执行如下命令刷新flash
 
-   `esptool.py --port COM3 write_flash 0 nodemcu-master-11-modules-2018-10-25-00-33-21-float.bin`
+   `esptool.py --port COM3 write_flash 0  nodemcu-master-11-modules-2018-11-01-11-20-13-float.bin`
 
-   说明：nodemcu-master-11-modules-2018-10-25-00-33-21-float.bin 由 https://nodemcu-build.com/ 生成，选择的模块有`bme280 file gpio http i2c mqtt net rtctime sjson sntp tmr uart wifi` 。
+   说明： nodemcu-master-11-modules-2018-11-01-11-20-13-float.bin 由 https://nodemcu-build.com/ 生成，选择的模块有`bme280 file gpio http i2c mqtt net tmr u8g2 uart wifi` 。
 
 5. 安装ESPlorer
 
@@ -59,7 +60,7 @@ BME280模块       ESP8266模块
 
 7. 写入程序
 
-   依次打开 bme280.lua init.lua setup.lua 三个文件上传到ESP8266
+   依次打开 bme280.lua init.lua setup.lua 三个文件上传到ESP8266(如果有OLED显示屏，请把bme280-oled.lua改名为bme280.lua并上传)
 
 8. 配置
 
