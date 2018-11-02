@@ -61,26 +61,21 @@ end
 
 function updatedisplay()
   disp:clearBuffer()
- -- disp:drawFrame(0, 0, 128, 64)
-  disp:drawStr( 1, 1, "BME280    BG6CQ")
-  disp:drawStr( 1, 16, "Temp: "..string.format("%.1f", temp).."C")
-  disp:drawStr( 1, 31, "Humi: "..string.format("%.1f", humi).."%")
-  disp:drawStr( 1, 47, "Press:"..string.format("%.1f", press/10.0).."mpar")
+  disp:drawStr(1, 1, "BME280    BG6CQ")
+  disp:drawStr(1, 16, "Temp: "..string.format("%.1f", temp).."C")
+  disp:drawStr(1, 31, "Humi: "..string.format("%.1f", humi).."%")
+  disp:drawStr(1, 47, "Press:"..string.format("%.1f", press/10.0).."mpar")
   disp:sendBuffer()
 end
 
-last='|'
+laststr = '|/-\\'
+last_index = 1
 function updateprogress()
-  if last == '|' then
-     last = '/'
-  elseif last == '/' then
-     last = '-'
-  elseif last == '-' then
-     last = '\\'
-  elseif last == '\\' then
-     last = '|'
+  last_index = last_index + 1
+  if last_index == 5 then
+     last_index = 1
   end
-  disp:drawStr( 60, 1, last)
+  disp:drawStr( 60, 1, laststr.sub(laststr, last_index,1))
   disp:sendBuffer()
 end
 
@@ -227,7 +222,6 @@ function flashkeypress()
   file.close()
 end
 
--- flash key io
 gpio.mode(3, gpio.INPUT, gpio.PULLUP)
 gpio.trig(3, "low", flashkeypress)
 
