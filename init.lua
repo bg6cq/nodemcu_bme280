@@ -1,3 +1,7 @@
+if file.exists("cmd.txt") then
+  return
+end
+
 if file.exists("update.txt") then
   -- enter update mode
   file.remove("update.txt")
