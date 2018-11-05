@@ -1,6 +1,7 @@
 dofile("config.lua")
 
 mqtt_connected = false
+data_send = false
 count = 0
 temp = 0
 humi = 0
@@ -59,23 +60,25 @@ wifi_disconnect_event = function(T)
   print("wifi disc")  
 end
 
+laststr = '|/-\\'
+last_index = 1
+
 function updatedisplay()
+  if data_send then
+     last_index = last_index + 1
+     if last_index == 5 then
+        last_index = 1
+     end
+  end
   disp:clearBuffer()
-  disp:drawStr(1, 1, "BME280    BG6CQ")
+  if data_send then
+     disp:drawStr(1, 1, "BME280  "..laststr.sub(laststr, last_index, last_index).."  BG6CQ")
+  else
+     disp:drawStr(1, 1, "BME280     BG6CQ")
+  end
   disp:drawStr(1, 16, "Temp: "..string.format("%.1f", temp).."C")
   disp:drawStr(1, 31, "Humi: "..string.format("%.1f", humi).."%")
   disp:drawStr(1, 47, "Press:"..string.format("%.1f", press/10.0).."mpar")
-  disp:sendBuffer()
-end
-
-laststr = '|/-\\'
-last_index = 1
-function updateprogress()
-  last_index = last_index + 1
-  if last_index == 5 then
-     last_index = 1
-  end
-  disp:drawStr( 60, 1, laststr.sub(laststr, last_index,1))
   disp:sendBuffer()
 end
 
@@ -126,6 +129,7 @@ function func_read_bme280()
   temp = T / 100
   humi = H / 1000
   updatedisplay()
+
   if wifi.sta.status() ~= 5 then
     wifi_error = wifi_error + 1
     if wifi_error > 200 then
@@ -158,7 +162,6 @@ function func_read_bme280()
   end
   if data_send then
     wifi_error = 0
-    updateprogress()
     blinkled(500)
   else
     wifi_error = wifi_error + 1
