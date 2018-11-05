@@ -5,7 +5,9 @@ if file.exists("update.txt") then
   dofile("update.lua")
 elseif file.exists("config.lua") and (not file.exists("flashkey.txt")) then
   print("normal startup")
-  dofile("bme280.lua")
+  tmr.alarm(1,3000,0,function()
+    dofile("bme280.lua")
+  end)
 else
   -- enter setup mode
   print("go in setup mode")
