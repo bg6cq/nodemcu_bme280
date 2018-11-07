@@ -86,7 +86,6 @@ srv:listen(80,function(conn)
       if (_GET.mqttuser == nil) then _GET.mqttuser = "" end
       if (_GET.mqttpassword == nil) then _GET.mqttpassword = "" end
       if (_GET.mqtttopic == nil) then _GET.mqtttopic = "" end
-      if (_GET.mqttmode == nil) then _GET.mqttmode = 0 end
       if (_GET.mqttupdate == nil) then _GET.mqttupdate = "false" end
 
       file.writeline('send_mqtt = ' .. _GET.sendmqtt )
